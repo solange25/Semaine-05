@@ -1,14 +1,39 @@
-// 1. Définissez une nouvelle variable "myHeaders", contenant un objet global Headers, configuré avec la paire de clé/valeur suivante: "Content-Type": "application/json"
 
+// 1. Définissez une nouvelle variable "myHeaders", contenant un objet global Headers, configuré avec la paire de clé/valeur suivante: "Content-Type": "application/json"
+let myHeaders = new Headers({"Content-Type": "application/json"})
 // 2. Créez un formulaire dans votre index.html. Utilisez les balises "form", "label", "input", "button", passez comme ID "my-form" à votre balise form, ensuite les attributs pour les attributs "name" de vos input il est OBLIGATOIRE d'utiliser les clés attendues par l'API. C'est à dire une clé "auteur" et une clé "comment". Un de vos deux input aura donc comme valeur à l'attribut "name": "auteur", et le second "name":"comment". Pour finir, donnez comme ID "submit-btn" à votre bouton.
 
 // 3. Maintenant que vous avez construit votre formulaire: nous allons créer une variable nommée "form" qui pointe directement vers votre formulaire grâce à la méthode getElementById
 
-//4. Vous disposez de vos headers, et d'une variable pointant vers votre formulaire. Maintenant vous allez créer une écoute d'évenement sur le bouton ayant pour id "submit-btn". 
+//4. Vous disposez de vos headers, et d'une variable pointant vers votre formulaire. Maintenant vous allez créer une écoute d'évenement sur le bouton ayant pour id "submit-btn".
+document.getElementById("click",)
+let authorVlalue= document.getElementById("auteur").Value;
+let commentValeur=document.getElementById("comment").Value;
+let body ={
+  "auteur":authorVlalue,
+  "comment":commentValeur
+}
+
+console.log(JSON.stringify(body))
+let getcomment()=>{
+  fetch("https://quotes-light-api.herokuapp.com/api/comments/",{
+    method="POST",
+})
+.then(Response =>{
+  console.log(Response)
+  let data=Response;
+  data.forEach(element => {
+    let myDiv = document.createElement("div");
+    let newContent = document.createTextNode(element.auteur)
+    myDiv.appendChild(newContent);
+    let currentDiv = document.getElementById("insert");
+    document.body.insertBefore(newDiv, currentDiv.nextElementSibling)
+  })
+})
 
 //5. A l'intérieur de cette écoute, vous allez créer une variable "myform" contenant un nouvel objet FormData qui pointe vers votre formulaire, utilisez la variable "form" créée précédement.
 
-//6. Maintenant que nous possédons tout le nécessaire à la rédaction de la méthode fetch(), lançons nous! Créez une méthode fetch qui utilise cette url : https://quotes-light-api.herokuapp.com/api/comments/ 
+//6. Maintenant que nous possédons tout le nécessaire à la rédaction de la méthode fetch(), lançons nous! Créez une méthode fetch qui utilise cette url : https://quotes-light-api.herokuapp.com/api/comments/
 
 //7. Passez en deuxième argument un objet contenant la méthode, les headers et le body
 
